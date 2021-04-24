@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check yourself!</title>
+</head>
+<style>
+    body {
+        background-color: #f4f9f9;
+        font-family: cursive;
+    }
+
+    h1 {
+        display: block;
+        margin: 0 auto;
+        font-size: 40px;
+        text-align: center;
+        color: white;
+        background-color: #A4EBF3;
+        border: 5px double rgb(88, 88, 107);
+        box-shadow: 5px 5px 5px 1px #92b7bb;
+        border-radius: 30px;
+        padding: 15px 20px;
+        max-width: 50%;
+        opacity: 0.6;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 30px;
+        max-width: 100%;
+        padding-bottom: 30px;
+    }
+
+    p {
+        line-height: 1.5;
+    }
+
+    li {
+        list-style: circle;
+    }
+
+    button {
+        display: block;
+        margin: 0 auto;
+        font-size: 20px;
+        padding: 20px;
+        border: 2px solid rgb(88, 88, 107);
+        border-radius: 30px;
+        color: white;
+        background-color: #A4EBF3;
+        box-shadow: 5px 5px 5px 1px #92b7bb;
+        transition: 150ms all ease-in-out;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: #38a2ad;
+    }
+
+    a {
+        text-decoration: none;
+        color: #8090e7;
+        transition: 150ms all ease-in-out;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .text {
+        text-align: justify;
+    }
+
+    .link {
+        text-align: center;
+        font-family: monospace;
+        font-size: large;
+        padding: 20px;
+    }
+
+    .buttonHome {
+        visibility: hidden;
+    }
+
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <br />
+        <h1>
+            <em> Who you are?</em> 🙅‍♀️
+        </h1>
+        <br />
+        <hr />
+        <h2>
+            Types of personalities
+        </h2>
+        <hr />
+        <br />
+        <img src="https://static.psycom.net/wp-content/uploads/2020/06/iStock-1159541053-1280x429.jpg" alt="People" />
+        <p class="text">
+            <strong>Personality</strong> is defined as the characteristic sets of behaviors, cognitions, and emotional
+            patterns that evolve from
+            biological and environmental factors. While there is no generally agreed upon definition of personality,
+            most
+            theories focus on motivation and psychological interactions with one's environment. Trait-based personality
+            theories, define personality as the traits that predict a person's behavior. On the
+            other hand, more behaviorally-based approaches define personality through learning and habits. Nevertheless,
+            most
+            theories view personality as relatively stable.
+            <br />
+            <br />
+            The four personality types are:
+        <ul>
+            <li>
+                Driver
+            </li>
+            <li>
+                Analytical
+            </li>
+            <li>
+                Amiable
+            </li>
+            <li>
+                Expressive
+            </li>
+        </ul>
+        </p>
+        <br />
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Personality" target="_blank">
+                Learn more on Wikipedia
+            </a>
+        </p>
+        <button>
+            👉 <strong>Check your personality</strong>
+        </button>
+        <br />
+        <button class="buttonHome">
+            <strong>Home page 🏠</strong>
+        </button>
+        <p class="link">
+            This page was built by
+            <a href="https://www.linkedin.com/in/alicja-my%C5%9Bliwiec-b8b160201/" alt="LinkedIn" target="_blank">
+                Alicja Myśliwiec
+            </a>
+        </p>
+    </div>
+    <script>
+
+        function start() {
+            let button = document.querySelector("button");
+            button.addEventListener("click", askQuestion);
+            let buttonHome = document.querySelector(".buttonHome");
+            buttonHome.addEventListener("click", reloadPage);
+        }
+
+        function changeHeading(text) {
+            let heading = document.querySelector("h2");
+            heading.innerHTML = text;
+        }
+
+        function changeParagraph(text) {
+            let paragraph = document.querySelector(".text");
+            paragraph.innerHTML = text;
+        }
+
+        function hideList() {
+            let list = document.querySelector("ul");
+            list.style.visibility = "hidden";
+        }
+
+        function showHomeButton() {
+            let buttonHome = document.querySelector(".buttonHome");
+            buttonHome.style.visibility = "visible";
+        }
+
+        function changeButton() {
+            let button = document.querySelector("button");
+            button.innerHTML = "Try again! 💪";
+        }
+
+        function reloadPage() {
+            window.setInterval(location.reload(true), s);
+        }
+
+        function changeAll() {
+            hideList();
+            showHomeButton();
+            changeButton();
+        }
+
+        function askQuestion() {
+            let name = prompt("What is your name?");
+            alert("Answer the questions: YES or NO");
+            let firstQuestion = prompt("Are you better at facts&data than relationships?");
+            let secondQuestion = prompt("Are you extrovert?");
+
+            firstQuestion = firstQuestion.trim().toLowerCase();
+            secondQuestion = secondQuestion.trim().toLowerCase();
+
+            if (firstQuestion === "yes" && secondQuestion === "yes") {
+                changeHeading(`${name}, you are a DRIVER person!`);
+                changeParagraph("Drivers are very strong personalities.Typically they have a go - get - it - done or whatever - it - takes personality. They can seem very dominant and are quick to take action. The negative is they can sometimes come across as stubborn or arrogant. Sometimes the personality type can come across as brash, running over others in order to get things accomplished.");
+                changeAll();
+            }
+            else if (firstQuestion === "yes" && secondQuestion === "no") {
+                changeHeading(`${name}, you are an ANALITYCAL person!`);
+                changeParagraph("Analytical types are constantly assessing, determining pros and cons, making lists of to do items. Analytical types are constantly asking questions, almost to the point of getting too much information. Others see them as talented with brilliant ideas. However, they can suffer from analysis paralysis, over analyzing situations too much. If you have ever made a list of “doing things the right way” you are an Analytical.");
+                changeAll();
+            }
+            else if (firstQuestion === "no" && secondQuestion === "no") {
+                changeHeading(`${name}, you are an AMIABLE person!`);
+                changeParagraph("The most calm, flat-type personality. Amiable types are laid back and are hard to excite. They seem to constantly be relaxed and desire a peaceful environment over anything else. They will go out of their way not to upset people. In fact, their indifference can often upset the people they are trying to appease. They will often wait until the last minute to make decisions and will often go with what everyone else is doing. They are deeply emotional individuals that want harmony.");
+                changeAll();
+            }
+            else if (firstQuestion === "no" && secondQuestion === "yes") {
+                changeHeading(`${name}, you are an EXPRESSIVE person!`);
+                changeParagraph("“Natural” people persons. They enjoy socializing and talking. They are great story tellers and often over commit themselves by attempting to please people. They also are good at communicating vision, getting others exited about ideas and issues. However, they sometimes cannot be relied upon to get things done.");
+                changeAll();
+            }
+            else {
+                alert("Something went wrong. Please, try again!");
+                reloadPage();
+            }
+        }
+
+        start();
+
+    </script>
+</body>
+
+</html>
